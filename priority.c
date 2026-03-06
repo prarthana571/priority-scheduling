@@ -17,11 +17,15 @@ int main()
     {
         scanf("%s %d %d %d", p[i].pid, &p[i].at, &p[i].bt, &p[i].pr);
         p[i].rt = p[i].bt;
+        p[i].wt = 0;
+        p[i].tat = 0;
+        p[i].ct = 0;
     }
     while(completed < n)
     {
         int highest = -1;
         int min_pr = 999;
+
         for(int i = 0; i < n; i++)
         {
             if(p[i].at <= time && p[i].rt > 0)
@@ -56,7 +60,7 @@ int main()
     {
         printf("%s %d\n", p[i].pid, p[i].wt);
         total_wt += p[i].wt;
-    
+    }
     printf("\nTurnaround Time:\n");
     for(int i = 0; i < n; i++)
     {
@@ -65,6 +69,5 @@ int main()
     }
     printf("\nAverage Waiting Time: %.2f\n", total_wt/n);
     printf("Average Turnaround Time: %.2f\n", total_tat/n);
-
     return 0;
 }
